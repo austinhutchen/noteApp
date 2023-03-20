@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "notable",
+    "slug": "notable",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
