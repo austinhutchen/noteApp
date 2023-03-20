@@ -4,6 +4,11 @@ export default style = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
+
     justifyContent: 'center',
+    display:'flex',
   },
+  Text:{
+    color: 'green',
+  }
 });
