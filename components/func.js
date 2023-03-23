@@ -8,7 +8,7 @@ export default function fquote() {
   let [response, setResponse] = useState();
   useEffect(() => {
     fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then(
         (result) => {
           setIsLoading(false);
