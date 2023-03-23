@@ -1,15 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Text, View } from 'react-native';
-import styles from './components/styles'
-export default function App() {
+import  {StatusBar} from "expo-status-bar";
+import { Text, View} from "react-native";
+import {styles} from "./components/styles";
+import Fquote from "./components/func";
 
+
+
+
+
+
+export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.Text}>Api call for quote will go here</Text>
+      <Text>
+      Hello, user
+      </Text>
+        <Fquote/>
       <StatusBar style="auto" />
+      <View>
     </View>
+    </View>
+   
+
   );
 }
-
-
