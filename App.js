@@ -16,8 +16,6 @@ export default function App() {
       </Text>
         <Fquote/>
       <StatusBar style="auto" />
-      <View>
-    </View>
     </View>
    
 
