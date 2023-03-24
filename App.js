@@ -22,16 +22,17 @@ export default function App() {
       // carful you don't get an infinite loop
       await getJoke();
     }
+      
   };
   
-  getJoke();
+
   
 
 
   return (
     <View style={styles.container}>
       <Text>Hello, user</Text>
-        {getJoke()}
+        {getJoke()["bio"]}
         <StatusBar style="auto"></StatusBar>
       </View>
 
