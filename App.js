@@ -7,39 +7,40 @@ export default function App() {
   let [isLoading, setIsLoading] = useState(true);
   let [error, setError] = useState();
   let [response, setResponse] = useState();
+
   useEffect(() => {
-    fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
-      .then((response) => response.json())
-      .then(
-        (result) => {
-          setIsLoading(false);
-          setResponse(result);
-        },
-        (error) => {
-          setIsLoading(false);
-          setError(error);
-        }
-      );
+    fetch("https://api.coindesk.com/v1/bpi/currentprice.json").then((response) => response.json()).then(
+  (result) => {
+    setIsLoading(false);
+    setResponse(result);
+  },
+  (error) => {
+    setIsLoading(false);
+    setError(error);
+  }
+
+)
+
+      
   }, []);
-  const fetch = () => {
+  
+  const getContent = () => {
     if (isLoading) {
       return <ActivityIndicator size="large"></ActivityIndicator>;
     }
     if (error) {
       return <Text>{error}</Text>;
-    } else {
-      return <Text> fetch done</Text>;
-    }
   };
+
+  return <Text>Bitcoin (USD): {response["bpi"]["USD"].rate}</Text>;
+  }
 
   return (
     <View style={styles.container}>
       <Text>Hello, user</Text>
-      <View>
-        {fetch()}
+        {getContent()}
         <StatusBar style="auto"></StatusBar>
       </View>
-      <StatusBar style="auto" />
-    </View>
+
   );
 }
