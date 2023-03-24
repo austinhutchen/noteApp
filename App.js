@@ -4,7 +4,6 @@ import { styles } from "./components/styles";
 import { useEffect, useState } from "react";
 
 export default function App() {
-
   const getJoke = async () => {
     try {
       const res = await fetch(
@@ -22,19 +21,13 @@ export default function App() {
       // carful you don't get an infinite loop
       await getJoke();
     }
-      
   };
-  
-
-  
-
 
   return (
     <View style={styles.container}>
       <Text>Hello, user</Text>
-        {getJoke()["bio"]}
-        <StatusBar style="auto"></StatusBar>
-      </View>
-
+      {getJoke()["bio"]}
+      <StatusBar style="auto"></StatusBar>
+    </View>
   );
 }
