@@ -9,7 +9,7 @@ export default function App() {
   let [response, setResponse] = useState();
 
   useEffect(() => {
-    fetch("https://api.coindesk.com/v1/bpi/currentprice.json").then((response) => response.json()).then(
+    fetch("https://api.quotable.io/search/authors?query=Einst").then((response) => response.json()).then(
   (result) => {
     setIsLoading(false);
     setResponse(result);
@@ -30,10 +30,10 @@ export default function App() {
     }
     if (error) {
       return <Text>{error}</Text>;
-  };
-
-  return <Text>Bitcoin (USD): {response["bpi"]["USD"].rate}</Text>;
   }
+
+  return <Text>QUOD: {}</Text>;
+  };
 
   return (
     <View style={styles.container}>
