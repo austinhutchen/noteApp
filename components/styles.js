@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     color: 'white',
   },
   ActivityIndicator:{
-  marginBottom:50,
+  marginBottom:35,
   },
 
 });
