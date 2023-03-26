@@ -9,9 +9,9 @@ export default function App() {
 let str =getJoke();
   return (
     <View style={styles.container}>
-     <Text>{str.toString()}</Text>
-      <Text>Hello, user</Text>
-     
+       <ActivityIndicator style={styles.ActivityIndicator}></ActivityIndicator>
+     <Text style={styles.Text}>{str.toString()}</Text>
+      <Text  style={styles.Text}>Hello, user</Text>
       <StatusBar style="auto"></StatusBar>
     </View>
   );
