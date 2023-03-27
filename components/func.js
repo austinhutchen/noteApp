@@ -1,14 +1,19 @@
 export default  getJoke = async () => {
  try {
-   const res = await fetch(
+    res = await fetch(
      "https://api.quotable.io/random"
    ).json();
+  
    if (!res.ok) {
      console.log("status: ", res.status);               
-     await getJoke();
+      await getJoke();
    }
-   console.log(res["content"])
-   return res["content"];
+   else{
+    json=await res.json();
+    console.log(json.content); 
+    return json.content;
+   }
+   
  } catch (error) {
    console.log("catch error", error);
    // carful you don't get an infinite loop
