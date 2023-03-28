@@ -2,16 +2,15 @@ export default  getJoke = async () => {
  try {
     res = await fetch(
      "https://api.quotable.io/random"
-   ).json();
+   );
   
    if (!res.ok) {
      console.log("status: ", res.status);               
       await getJoke();
    }
    else{
-    json=await res.json();
-    console.log(json.content); 
-    return json.content;
+    json=await res.json(); 
+    return json;
    }
    
  } catch (error) {
