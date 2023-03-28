@@ -48,12 +48,13 @@ class App extends Component {
 
                <View style={{padding: 30, marginTop: "30%"}}>
                  <View style={{backgroundColor: 'black', width: '30%', marginBottom: 10}}>
-                  <Text style={{color: '#0ac6f0', padding: 20, fontSize: 16}}
-                    onPress={() => Linking.openURL(`https://twitter.com/intent/tweet?text=${quote} ${author}`)}>
-                    Twitter
-                  </Text>
+             
                   </View>
                   <Button style={{backgroundColor: "black"}} title="New Quote" onPress={this.getNewQuote} />
+                  <Button title="Tweet" style={{color: '#0ac6f0', padding: 20, fontSize: 16}}
+                    onPress={() => Linking.openURL(`https://twitter.com/intent/tweet?text=${quote} ${author}`)}>
+
+                  </Button>
                </View>
             </View>
          </View>
