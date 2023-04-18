@@ -7,10 +7,13 @@ import {
   Button,
   AsyncStorage,
   state,
+  setState,
 } from "react-native";
-import axios from "axios";
+
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
+import { getQuote } from "./components/helpers";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,92 +22,47 @@ class App extends Component {
       author: "",
     };
   }
-
-  componentDidMount() {
-    this.getQuote();
-  }
-
-  getQuote() {
-    let url =
-      "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
-
-    axios
-      .get(url)
-      .then((res) => {
-        let data = res.data.quotes;
-        let quoteNum = Math.floor(Math.random() * data.length);
-        let randomQuote = data[quoteNum];
-
-        this.setState({
-          quote: randomQuote["quote"],
-          author: randomQuote["author"],
-        });
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
+  // same as on refresh
+  async componentDidMount() {
+    try {
+      let b = await getQuote();
+      this.setState({
+        quote: b["quote"],
+        author: b["author"],
       });
+    } catch (error) {
+      console.log("DEFINED ERRORRRRR FETCH FAIL\n" + error);
+    }
   }
-
-  getNewQuote = () => {
+  getNewQuote = async () => {
     //will be called on clicking the New Quote button
-    this.getQuote();
+    try {
+      let b = await getQuote();
+      this.setState({
+        quote: b["quote"],
+        author: b["author"],
+      });
+    } catch (error) {
+      console.log("DEFINED ERRORRRRR FETCH FAIL\n" + error);
+    }
   };
 
-  async render() {
-    updateLocal = async (j) => {
+  render() {
+    updateLocal = (j) => {
       let serial = JSON.stringify(j);
       try {
-        await AsyncStorage.setItem("Journal", serial);
+        AsyncStorage.setItem("Journal", serial);
       } catch (error) {
         console.log(error);
       }
     };
-    check = async () => {
-      if ((await AsyncStorage.getItem("Journal")) !== null) {
+    check = () => {
+      if (AsyncStorage.getItem("Journal") !== null) {
         return true;
       }
     };
-
-    /*
-    document.addEventListener("DOMContentLoaded", function () {
-      const p = new User();
-      let j = new Journal();
-      if (check() === true) {
-        const local = JSON.parse(localStorage.getItem("Journal"));
-        document.getElementById("submit").addEventListener("click", (event) => {
-          j.enterJournal(local, event);
-          updateLocal(j);
-        });
-        document.getElementById("name").addEventListener("click", (event) => {
-          p.getData(event);
-        });
-        document.getElementById("delete").addEventListener("click", () => {
-          j.reset();
-        });
-        document.getElementById("display").addEventListener("click", () => {
-          j.display();
-        });
-      } else {
-        document.getElementById("entry").addEventListener("click", (event) => {
-          j.enterJournal(undefined, event);
-          updateLocal(j);
-        });
-        document.getElementById("name").addEventListener("click", (event) => {
-          p.getData(event);
-        });
-      }
-    });
-    let today = new Date();
-    const dd = String(today.getDate()).padStart(2, "0");
-    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-    const yyyy = today.getFullYear();
-
-    today = mm + "/" + dd + "/" + yyyy;
-    document.writeln(today);
-*/
     const { quote, author } = this.state; //Destructuring
-    const [modalVisible, setModalVisible] = useState(false);
+
     return (
       <View style={styles.container}>
         <Text style={{ color: "white", padding: 60, fontSize: 30 }}>
