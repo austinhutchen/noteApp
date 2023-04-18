@@ -61,7 +61,7 @@ class App extends Component {
       }
     };
     check = async () => {
-      if (await AsyncStorage.getItem("Journal") !== null) {
+      if ((await AsyncStorage.getItem("Journal")) !== null) {
         return true;
       }
     };

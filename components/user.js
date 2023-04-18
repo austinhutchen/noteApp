@@ -1,4 +1,4 @@
-import {  AsyncStorage,} from "react-native"
+import { AsyncStorage } from "react-native";
 class Journal {
   constructor() {
     this.entries = [];
