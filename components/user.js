@@ -1,3 +1,4 @@
+import {  AsyncStorage,} from "react-native"
 class Journal {
   constructor() {
     this.entries = [];
@@ -16,7 +17,7 @@ class Journal {
     for (let i = 0; i < size; i++) {
       this.entries.pop();
     }
-    localStorage.removeItem("Journal");
+    AsyncStorage.removeItem("Journal");
   };
   display = () => {
     if (this.string !== undefined) {
@@ -37,6 +38,7 @@ class Journal {
         this.add(data.entries[i]);
       }
     }
+    //replace
     const text = document.getElementById("entry");
     if (text !== undefined) {
       this.add(text.value);
@@ -59,6 +61,7 @@ class User {
   }
 
   getData = () => {
+    //replace
     const text = document.getElementById("name");
     document.forms[0].reset();
     this.setName(text.value);
