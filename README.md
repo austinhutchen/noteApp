@@ -1,2 +1,2 @@
 # notable
-A journaling app for mental health that will consist of a quote of the day, a journal section, and a save journal option
+Journaling app for mental health converted from the <a href="https://github.com/austinhutchen/Journal.NET.git">web variant </a> , which used ASP.NET .Converted to react native using state, ASYNCstorage, and some other DOM manipulations.
