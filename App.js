@@ -15,6 +15,7 @@ import { Journal, User } from "./components/user";
 import { getQuote } from "./components/helpers";
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -22,25 +23,32 @@ class App extends Component {
       author: "",
     };
   }
+  setup=()=>{
+    j = new Journal();
+    u = new User();
+    return [j,u];
+  }
   // same as on refresh
-  async componentDidMount() {
+  componentDidMount = async () => {
     try {
-      let b = await getQuote();
+      let res = await getQuote();
+      let c = res[0];
       this.setState({
-        quote: b["quote"],
-        author: b["author"],
+        quote: c["quote"],
+        author: c["author"],
       });
     } catch (error) {
       console.log("DEFINED ERRORRRRR FETCH FAIL\n" + error);
     }
-  }
+  };
   getNewQuote = async () => {
     //will be called on clicking the New Quote button
     try {
-      let b = await getQuote();
+      let res = await getQuote();
+      let c = res[0];
       this.setState({
-        quote: b["quote"],
-        author: b["author"],
+        quote: c["quote"],
+        author: c["author"],
       });
     } catch (error) {
       console.log("DEFINED ERRORRRRR FETCH FAIL\n" + error);
