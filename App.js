@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Linking, Text, View, Button } from "react-native";
+import { StyleSheet, Linking, Text, View, Button, Modal } from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
@@ -53,7 +53,10 @@ class App extends Component {
         return true;
       }
     };
-/*
+
+    const [modalVisible, setModalVisible] = useState(false);
+
+    /*
     document.addEventListener("DOMContentLoaded", function () {
       const p = new User();
       let j = new Journal();
