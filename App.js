@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { StyleSheet, Linking, Text, View, Button, Modal } from "react-native";
+import {
+  StyleSheet,
+  Linking,
+  Text,
+  View,
+  Button,
+  AsyncStorage,
+  state,
+} from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
@@ -43,18 +51,20 @@ class App extends Component {
     this.getQuote();
   };
 
-  render() {
-    updateLocal = (j) => {
+  async render() {
+    updateLocal = async (j) => {
       let serial = JSON.stringify(j);
-      localStorage.setItem("Journal", serial);
+      try {
+        await AsyncStorage.setItem("Journal", serial);
+      } catch (error) {
+        console.log(error);
+      }
     };
-    check = () => {
-      if (localStorage.getItem("Journal") !== null) {
+    check = async () => {
+      if (await AsyncStorage.getItem("Journal") !== null) {
         return true;
       }
     };
-
-    const [modalVisible, setModalVisible] = useState(false);
 
     /*
     document.addEventListener("DOMContentLoaded", function () {
@@ -94,7 +104,7 @@ class App extends Component {
     document.writeln(today);
 */
     const { quote, author } = this.state; //Destructuring
-
+    const [modalVisible, setModalVisible] = useState(false);
     return (
       <View style={styles.container}>
         <Text style={{ color: "white", padding: 60, fontSize: 30 }}>
