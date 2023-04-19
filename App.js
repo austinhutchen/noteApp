@@ -34,12 +34,8 @@ class App extends Component {
   };
 
   getNewQuote = async () => {
-    const d = new Date();
-    var date = await d.getDate();
-    var month = await d.getMonth() + 1;
-    var year = await d.getFullYear();
-    td =  month + '-' + date + '-' + year;
     let url = "https://api.quotable.io/random";
+    td=Today();
     axios.get(url).then((res) => {
       const data = res.data.content;
       const author = res.data.author;
