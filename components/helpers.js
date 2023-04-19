@@ -5,8 +5,7 @@ export default  async function getQuote() {
   .then(response => response.text())
   .then(data => {
     // deal with the data that the server sent back
-    console.log(data)
-    setData(response);
+  return data;
   })
   .catch(error => {
     // handle your failures here

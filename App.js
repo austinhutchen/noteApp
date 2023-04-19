@@ -24,8 +24,6 @@ class App extends Component {
   }
 
   setData(res){
-    console.log("made it")
-    console.log(JSON.stringify(res))
     if (res !== undefined) {
       this.setState({
         quote: res.content,
@@ -39,12 +37,13 @@ class App extends Component {
   // same as on refresh
   componentDidMount = async () => {
       const apiData = await getQuote();
-      setData(apiData);
+      this.setData(apiData);
   };
 
   getNewQuote = async () => {
       const apiData = await getQuote();
-      setData(apiData);
+      this.setData(apiData);
+    
   };
 
 
