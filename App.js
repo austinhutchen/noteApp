@@ -30,12 +30,13 @@ class App extends Component {
 
   // same as on refresh
   componentDidMount = () => {
+    td=Today();
+    this.setData("","",td);
     this.getNewQuote();
   };
 
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random";
-    td=Today();
     axios.get(url).then((res) => {
       const data = res.data.content;
       const author = res.data.author;
