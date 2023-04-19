@@ -12,11 +12,9 @@ import {
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
-
-
+import {updateLocal, check} from './components/helpers'
 class App extends Component {
   constructor(props) {
-
     super(props);
     this.state = {
       quote: "",
@@ -24,54 +22,30 @@ class App extends Component {
     };
   }
 
-  setData(res) {
-    if (res !== undefined) {
-      this.setState({
-        quote: res,
-        author: "unknown",
-      });
-    } else {
-      console.log("UNDEFINED ERR" + "\n");
-    }
+  setData(res, author) {
+    this.setState({
+      quote: res,
+      author: author,
+    });
   }
 
   // same as on refresh
-  componentDidMount = async () => {
-    let url = "https://api.quotable.io/random";
-   axios.get(url).then((res)=>{
-      const data = res.data.content;
-      console.log('ONE:'+data);
-      this.setData(data);
-     
-  });
-    
+  componentDidMount = () => {
+    this.getNewQuote();
   };
 
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random";
-   axios.get(url).then((res)=>{
+    axios.get(url).then((res) => {
       const data = res.data.content;
-      console.log('ONE:'+data);
-      this.setData(data);
-     
-  });
-    
+      const author = res.data.author;
+      console.log("ONE:" + data + " " + author + "\n");
+      this.setData(data, author);
+    });
   };
 
   render() {
-    updateLocal = (j) => {
-      let serial = JSON.stringify(j);
-      try {
-        AsyncStorage.setItem("Journal", serial);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    check = () => {
-      if (AsyncStorage.getItem("Journal") !== null) {
-        return true;
-      }
-    };
+    
 
     const { quote, author } = this.state; //Destructuring
     return (
@@ -85,7 +59,7 @@ class App extends Component {
             <Text style={{ color: "white", fontSize: 20 }}>{quote}</Text>
           </View>
           <View style={{ marginTop: 20, marginBottom: 20 }}>
-            <Text style={{ color: "black", fontSize: 25 }}>{}</Text>
+            <Text style={styles.author}>{author}</Text>
           </View>
 
           <View style={{ padding: 30, marginTop: "30%" }}>
