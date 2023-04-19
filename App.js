@@ -16,6 +16,7 @@ import { Journal, User } from "./components/user";
 
 class App extends Component {
   constructor(props) {
+
     super(props);
     this.state = {
       quote: "",
