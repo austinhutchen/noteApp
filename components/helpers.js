@@ -17,3 +17,11 @@ export const check = () => {
     return true;
   }
 };
+
+const Today=async ()=>{
+
+
+  //Alert.alert(date + '-' + month + '-' + year);
+  // You can turn it in to your desired format
+
+}
