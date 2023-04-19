@@ -9,7 +9,7 @@ import {
   state,
   setState,
 } from "react-native";
-
+import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
 import getQuote from "./components/helpers";
@@ -23,7 +23,7 @@ class App extends Component {
     };
   }
 
-   setData(res){
+  setData(res) {
     if (res !== undefined) {
       this.setState({
         quote: res,
@@ -35,22 +35,27 @@ class App extends Component {
   }
 
   // same as on refresh
-  componentDidMount =  () => {
-      const apiData =  getQuote();
-      console.log(apiData);
-      this.setData(apiData);
-  };
-
-  getNewQuote =  () => {
-      const apiData =  getQuote();
-      this.setData(apiData);
+  componentDidMount = async () => {
+    let url = "https://api.quotable.io/random";
+   axios.get(url).then((res)=>{
+      const data = res.data.content;
+      console.log('ONE:'+data);
+      this.setData(data);
+     
+  });
     
   };
 
-
- 
-
-
+  getNewQuote = async () => {
+    let url = "https://api.quotable.io/random";
+   axios.get(url).then((res)=>{
+      const data = res.data.content;
+      console.log('ONE:'+data);
+      this.setData(data);
+     
+  });
+    
+  };
 
   render() {
     updateLocal = (j) => {

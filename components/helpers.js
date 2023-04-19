@@ -5,11 +5,11 @@ import axios from "axios";
 
 
 
-export default  async function getQuote() {
+export default  function getQuote() {
   let url = "https://api.quotable.io/random";
-  await axios.get(url).then((res)=>{
+   axios.get(url).then((res)=>{
       const data = res.data.content;
-      console.log(data);
+      console.log('ONE:'+data);
       return data;
   });
 
