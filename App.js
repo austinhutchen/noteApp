@@ -38,7 +38,7 @@ class App extends Component {
     var date = await d.getDate();
     var month = await d.getMonth() + 1;
     var year = await d.getFullYear();
-    td =  date + '-' + month + '-' + year;
+    td =  month + '-' + date + '-' + year;
     let url = "https://api.quotable.io/random";
     axios.get(url).then((res) => {
       const data = res.data.content;
