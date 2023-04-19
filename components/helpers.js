@@ -1,5 +1,5 @@
 
-
+import moment from 'moment'; 
 
 
 
@@ -17,3 +17,11 @@ export const check = () => {
     return true;
   }
 };
+
+export const Today=()=>{
+  var currentDate =  moment().format("MM/DD/YYYY");
+  return currentDate;
+  //Alert.alert(date + '-' + month + '-' + year);
+  // You can turn it in to your desired format
+
+}

@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 import {
-  StyleSheet,
   Linking,
   Text,
   View,
   Button,
   AsyncStorage,
-  state,
-  setState,
 } from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
-import {updateLocal, check} from './components/helpers'
+import {updateLocal, check,Today} from './components/helpers'
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       quote: "",
       author: "",
+      date:"",
     };
   }
 
-  setData(res, author) {
+  setData(res, author,today) {
     this.setState({
       quote: res,
       author: author,
+      date:today,
     });
   }
 
@@ -36,18 +35,19 @@ class App extends Component {
 
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random";
+    td=Today();
     axios.get(url).then((res) => {
       const data = res.data.content;
       const author = res.data.author;
       console.log("ONE:" + data + " " + author + "\n");
-      this.setData(data, author);
+      this.setData(data, author,td);
     });
   };
 
   render() {
     
 
-    const { quote, author } = this.state; //Destructuring
+    const { quote, author,date } = this.state; //Destructuring
     return (
       <View style={styles.container}>
         <Text style={{ color: "white", padding: 60, fontSize: 30 }}>
@@ -56,6 +56,7 @@ class App extends Component {
 
         <View className={styles.quotebox}>
           <View className={styles.quote}>
+          <Text style={styles.author}>{date}</Text>
             <Text style={styles.quote}>{quote}</Text>
           </View>
           <View style={{ marginTop: 20, marginBottom: 20 }}>
