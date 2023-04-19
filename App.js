@@ -56,7 +56,7 @@ class App extends Component {
 
         <View className={styles.quotebox}>
           <View className={styles.quote}>
-            <Text style={{ color: "white", fontSize: 20 }}>{quote}</Text>
+            <Text style={styles.quote}>{quote}</Text>
           </View>
           <View style={{ marginTop: 20, marginBottom: 20 }}>
             <Text style={styles.author}>{author}</Text>

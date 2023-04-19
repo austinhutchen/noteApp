@@ -32,5 +32,9 @@ export const styles = StyleSheet.create({
     color: "black", 
     fontSize: 25,
 
+  },
+  quote:{
+    color: "white",
+     fontSize: 20
   }
 });
