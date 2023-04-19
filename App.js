@@ -22,32 +22,35 @@ class App extends Component {
       author: "",
     };
   }
-  // same as on refresh
-  componentDidMount = async () => {
-    const res = await getQuote();
-    console.log("MADE IT " + res.content + "\n");
-    try {
+
+  setData(res){
+    console.log("made it")
+    console.log(JSON.stringify(res))
+    if (res !== undefined) {
       this.setState({
-        quote: res,
+        quote: res.content,
         author: "unknown",
       });
-    } catch (error) {
-      console.log("Mount fail \n" + error);
+    } else {
+      console.log("UNDEFINED ERR" + "\n");
     }
+  }
+
+  // same as on refresh
+  componentDidMount = async () => {
+      const apiData = await getQuote();
+      setData(apiData);
   };
 
   getNewQuote = async () => {
-    //will be called on clicking the New Quote button
-    const res = await getQuote();
-    try {
-      this.setState({
-        quote: res,
-        author: "unknown",
-      });
-    } catch (error) {
-      console.log("Fetch Fail\n" + error);
-    }
+      const apiData = await getQuote();
+      setData(apiData);
   };
+
+
+ 
+
+
 
   render() {
     updateLocal = (j) => {

@@ -1,12 +1,17 @@
 
-export default async function getQuote(){
-  let url ="https://api.quotable.io/random";
-     await fetch(url)
-     .then(response => response.json())
-     .then(data => {return data.content })
-     .catch(error => console.error(error));
-    
-
+export default  async function getQuote() {
+  let url = "https://api.quotable.io/random";
+  await fetch(url, { mode: 'no-cors' })
+  .then(response => response.text())
+  .then(data => {
+    // deal with the data that the server sent back
+    console.log(data)
+    setData(response);
+  })
+  .catch(error => {
+    // handle your failures here
+      console.log('DUN FUCKED Up'+error.message)
+  })
 }
 /*
     document.addEventListener("DOMContentLoaded", function () {
