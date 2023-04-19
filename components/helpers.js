@@ -1,20 +1,12 @@
-import axios from "axios";
 
-export default async function getQuote() {
-  let url =
-    "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+export default async function getQuote(){
+  let url ="https://api.quotable.io/random";
+     await fetch(url)
+     .then(response => response.json())
+     .then(data => {return data.content })
+     .catch(error => console.error(error));
+    
 
-  try {
-    const res = await axios.get(url);
-    let data = res.json.quotes;
-    // rand quote from data
-    let quoteNum = Math.floor(Math.random() * data.length);
-    let randomQuote = data[quoteNum];
-    return [randomQuote, null];
-  } catch (error) {
-    console.log(error);
-    return [null, error];
-  }
 }
 /*
     document.addEventListener("DOMContentLoaded", function () {

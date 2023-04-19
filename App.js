@@ -12,10 +12,9 @@ import {
 
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
-import { getQuote } from "./components/helpers";
+import getQuote from "./components/helpers";
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -23,35 +22,30 @@ class App extends Component {
       author: "",
     };
   }
-  setup=()=>{
-    j = new Journal();
-    u = new User();
-    return [j,u];
-  }
   // same as on refresh
   componentDidMount = async () => {
+    const res = await getQuote();
+    console.log("MADE IT " + res.content + "\n");
     try {
-      let res = await getQuote();
-      let c = res[0];
       this.setState({
-        quote: c["quote"],
-        author: c["author"],
+        quote: res,
+        author: "unknown",
       });
     } catch (error) {
-      console.log("DEFINED ERRORRRRR FETCH FAIL\n" + error);
+      console.log("Mount fail \n" + error);
     }
   };
+
   getNewQuote = async () => {
     //will be called on clicking the New Quote button
+    const res = await getQuote();
     try {
-      let res = await getQuote();
-      let c = res[0];
       this.setState({
-        quote: c["quote"],
-        author: c["author"],
+        quote: res,
+        author: "unknown",
       });
     } catch (error) {
-      console.log("DEFINED ERRORRRRR FETCH FAIL\n" + error);
+      console.log("Fetch Fail\n" + error);
     }
   };
 
@@ -69,8 +63,8 @@ class App extends Component {
         return true;
       }
     };
-    const { quote, author } = this.state; //Destructuring
 
+    const { quote, author } = this.state; //Destructuring
     return (
       <View style={styles.container}>
         <Text style={{ color: "white", padding: 60, fontSize: 30 }}>
@@ -82,7 +76,7 @@ class App extends Component {
             <Text style={{ color: "white", fontSize: 20 }}>{quote}</Text>
           </View>
           <View style={{ marginTop: 20, marginBottom: 20 }}>
-            <Text style={{ color: "black", fontSize: 25 }}>{author}</Text>
+            <Text style={{ color: "black", fontSize: 25 }}>{}</Text>
           </View>
 
           <View style={{ padding: 30, marginTop: "30%" }}>
