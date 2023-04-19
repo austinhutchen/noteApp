@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import {
-  StyleSheet,
   Linking,
   Text,
   View,
   Button,
   AsyncStorage,
-  state,
-  setState,
 } from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
