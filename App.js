@@ -23,10 +23,10 @@ class App extends Component {
     };
   }
 
-  setData(res){
+   setData(res){
     if (res !== undefined) {
       this.setState({
-        quote: res.content,
+        quote: res,
         author: "unknown",
       });
     } else {
@@ -35,13 +35,14 @@ class App extends Component {
   }
 
   // same as on refresh
-  componentDidMount = async () => {
-      const apiData = await getQuote();
+  componentDidMount =  () => {
+      const apiData =  getQuote();
+      console.log(apiData);
       this.setData(apiData);
   };
 
-  getNewQuote = async () => {
-      const apiData = await getQuote();
+  getNewQuote =  () => {
+      const apiData =  getQuote();
       this.setData(apiData);
     
   };

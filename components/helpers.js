@@ -1,16 +1,18 @@
+import axios from "axios";
+
+
+
+
+
 
 export default  async function getQuote() {
   let url = "https://api.quotable.io/random";
-  await fetch(url, { mode: 'no-cors' })
-  .then(response => response.text())
-  .then(data => {
-    // deal with the data that the server sent back
-  return data;
-  })
-  .catch(error => {
-    // handle your failures here
-      console.log('DUN FUCKED Up'+error.message)
-  })
+  await axios.get(url).then((res)=>{
+      const data = res.data.content;
+      console.log(data);
+      return data;
+  });
+
 }
 /*
     document.addEventListener("DOMContentLoaded", function () {
