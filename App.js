@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
-import getQuote from "./components/helpers";
+
 
 class App extends Component {
   constructor(props) {
