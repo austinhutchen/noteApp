@@ -28,4 +28,13 @@ export const styles = StyleSheet.create({
   title: {
     marginBottom: 150,
   },
+  author:{
+    color: "black", 
+    fontSize: 25,
+
+  },
+  quote:{
+    color: "white",
+     fontSize: 20
+  }
 });
