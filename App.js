@@ -77,15 +77,8 @@ class App extends Component {
               title="New Quote"
               onPress={this.getNewQuote}
             />
-            <Button
-              title="Tweet"
-              style={{ color: "#0ac6f0", padding: 20, fontSize: 16 }}
-              onPress={() =>
-                Linking.openURL(
-                  `https://twitter.com/intent/tweet?text=${quote} ${author}`
-                )
-              }
-            ></Button>
+            
+      
           </View>
         </View>
       </View>
