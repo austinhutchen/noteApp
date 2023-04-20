@@ -77,7 +77,7 @@ class App extends Component {
 
             <Button
               style={{ backgroundColor: "black" }}
-              title="New Quote"
+              title="Fetch Quote"
               onPress={this.getNewQuote}
             />
             
