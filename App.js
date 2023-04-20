@@ -45,12 +45,11 @@ class App extends Component {
     const { quote, author, date } = this.state; //Destructuring
     return (
       <View style={styles.container}>
-        <Text style={{ color: "white", padding: 40, fontSize: 30 }}>
+        <Text style={{ color: "white", paddingTop: 80,paddingBottom:30, fontSize: 25,alignSelf:"center" }}>
           Quote of the day!
         </Text>
 
         <View className={styles.quotebox}>
-          <View className={styles.quote}>
             <Text style={styles.author}>{date}</Text>
             <View>
               <View style={{ alignSelf: "center", padding: 12 }}>
@@ -60,7 +59,6 @@ class App extends Component {
           </View>
           <View style={{ marginTop: 20, marginBottom: 20 }}>
             <Text style={styles.author}>- {author}</Text>
-          </View>
 
           <View style={{ padding: 30, marginTop: "30%" }}>
             <TextInput
