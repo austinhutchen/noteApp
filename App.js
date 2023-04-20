@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   Linking,
   Text,
+  TextInput,
   View,
   Button,
   AsyncStorage,
@@ -47,12 +48,11 @@ class App extends Component {
 
   render() {
     
-
     const { quote, author,date } = this.state; //Destructuring
     return (
       <View style={styles.container}>
-        <Text style={{ color: "white", padding: 60, fontSize: 30 }}>
-          Random Quotes
+        <Text style={{ color: "white", padding: 40, fontSize: 30 }}>
+          Quote of the day!
         </Text>
 
         <View className={styles.quotebox}>
@@ -61,31 +61,27 @@ class App extends Component {
             <Text style={styles.quote}>{quote}</Text>
           </View>
           <View style={{ marginTop: 20, marginBottom: 20 }}>
-            <Text style={styles.author}>{author}</Text>
+            <Text style={styles.author}>- {author}</Text>
           </View>
 
           <View style={{ padding: 30, marginTop: "30%" }}>
+          <TextInput style={styles.Input}  placeholder="useless placeholder" onChangeText={updateLocal}></TextInput>
             <View
               style={{
                 backgroundColor: "black",
                 width: "30%",
                 marginBottom: 10,
               }}
+              
             ></View>
+
             <Button
               style={{ backgroundColor: "black" }}
               title="New Quote"
               onPress={this.getNewQuote}
             />
-            <Button
-              title="Tweet"
-              style={{ color: "#0ac6f0", padding: 20, fontSize: 16 }}
-              onPress={() =>
-                Linking.openURL(
-                  `https://twitter.com/intent/tweet?text=${quote} ${author}`
-                )
-              }
-            ></Button>
+            
+      
           </View>
         </View>
       </View>
