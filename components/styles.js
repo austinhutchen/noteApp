@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 25,
-    backgroundColor: "olive",
+    backgroundColor:  0x6A706C,
     // alignItems: 'center',
     // justifyContent: 'center',
   },
@@ -35,6 +35,16 @@ export const styles = StyleSheet.create({
   },
   quote:{
     color: "white",
-     fontSize: 20
-  }
+     fontSize: 20,
+     padding:40
+  },
+  date:{
+  
+  },
+  Input:{
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
 });
