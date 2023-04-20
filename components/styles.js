@@ -1,10 +1,10 @@
-import { StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 25,
-    backgroundColor:  "brown",
+    backgroundColor: "brown",
     // alignItems: 'center',
     // justifyContent: 'center',
   },
@@ -28,20 +28,20 @@ export const styles = StyleSheet.create({
   title: {
     marginBottom: 150,
   },
-  author:{
-    color: "black", 
+  author: {
+    color: "black",
     fontSize: 25,
-
   },
-  quote:{
+  quote: {
+    alignSelf: "center",
     color: "white",
-     fontSize: 20,
-     padding:40
+    fontSize: 15,
+    padding: 20,
+    borderLeftWidth: 4,
+    borderRightWidth: 4,
   },
-  date:{
-  
-  },
-  Input:{
+  date: {},
+  Input: {
     height: 40,
     margin: 12,
     borderWidth: 1,
