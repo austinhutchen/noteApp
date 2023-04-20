@@ -14,6 +14,8 @@ import {updateLocal, check,Today} from './components/helpers'
 class App extends Component {
   constructor(props) {
     super(props);
+    this.j=new Journal();
+    this.u = new User();
     this.state = {
       quote: "",
       author: "",
@@ -65,7 +67,7 @@ class App extends Component {
           </View>
 
           <View style={{ padding: 30, marginTop: "30%" }}>
-          <TextInput style={styles.Input}  placeholder="useless placeholder" onChangeText={updateLocal}></TextInput>
+          <TextInput style={styles.Input}  placeholder="useless placeholder" onChangeText={updateLocal(this.j)}></TextInput>
             <View
               style={{
                 backgroundColor: "black",
@@ -77,7 +79,7 @@ class App extends Component {
 
             <Button
               style={{ backgroundColor: "black" }}
-              title="New Quote"
+              title="Fetch Quote"
               onPress={this.getNewQuote}
             />
             

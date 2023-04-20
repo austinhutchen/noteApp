@@ -1,5 +1,5 @@
 import { AsyncStorage } from "react-native";
-class Journal {
+export class Journal {
   constructor() {
     this.entries = [];
   }
@@ -46,7 +46,7 @@ class Journal {
   };
 }
 
-class User {
+export class User {
   constructor() {
     this.Name = "";
   }
