@@ -1,40 +1,33 @@
 import React, { Component } from "react";
-import {
-  Linking,
-  Text,
-  TextInput,
-  View,
-  Button,
-  AsyncStorage,
-} from "react-native";
+import { Text, TextInput, View, Button } from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
-import {updateLocal, check,Today} from './components/helpers'
+import { updateLocal, check, Today } from "./components/helpers";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.j=new Journal();
+    this.j = new Journal();
     this.u = new User();
     this.state = {
       quote: "",
       author: "",
-      date:"",
+      date: "",
     };
   }
 
-  setData(res, author,today) {
+  setData(res, author, today) {
     this.setState({
       quote: res,
       author: author,
-      date:today,
+      date: today,
     });
   }
 
   // same as on refresh
   componentDidMount = () => {
-    td=Today();
-    this.setData("","",td);
+    td = Today();
+    this.setData("", "", td);
     this.getNewQuote();
   };
 
@@ -44,37 +37,41 @@ class App extends Component {
       const data = res.data.content;
       const author = res.data.author;
       console.log("ONE:" + data + " " + author + "\n");
-      this.setData(data, author,td);
+      this.setData(data, author, td);
     });
   };
 
   render() {
-    
-    const { quote, author,date } = this.state; //Destructuring
+    const { quote, author, date } = this.state; //Destructuring
     return (
       <View style={styles.container}>
-        <Text style={{ color: "white", padding: 40, fontSize: 30 }}>
+        <Text style={{ color: "white", paddingTop: 80,paddingBottom:30, fontSize: 25,alignSelf:"center" }}>
           Quote of the day!
         </Text>
 
         <View className={styles.quotebox}>
-          <View className={styles.quote}>
-          <Text style={styles.author}>{date}</Text>
-            <Text style={styles.quote}>{quote}</Text>
+            <Text style={styles.author}>{date}</Text>
+            <View>
+              <View style={{ alignSelf: "center", padding: 12 }}>
+                <Text style={styles.quote}>{quote}</Text>
+              </View>
+            </View>
           </View>
           <View style={{ marginTop: 20, marginBottom: 20 }}>
             <Text style={styles.author}>- {author}</Text>
-          </View>
 
           <View style={{ padding: 30, marginTop: "30%" }}>
-          <TextInput style={styles.Input}  placeholder="useless placeholder" onChangeText={updateLocal(this.j)}></TextInput>
+            <TextInput
+              style={styles.Input}
+              placeholder="useless placeholder"
+              onChangeText={updateLocal(this.j)}
+            ></TextInput>
             <View
               style={{
                 backgroundColor: "black",
                 width: "30%",
                 marginBottom: 10,
               }}
-              
             ></View>
 
             <Button
@@ -82,8 +79,6 @@ class App extends Component {
               title="Fetch Quote"
               onPress={this.getNewQuote}
             />
-            
-      
           </View>
         </View>
       </View>
