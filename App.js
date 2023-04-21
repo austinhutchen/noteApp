@@ -50,7 +50,7 @@ class App extends Component {
         </Text>
 
         <View className={styles.quotebox}>
-            <Text style={styles.author}>{date}</Text>
+            <Text style={styles.date}>{date}</Text>
             <View>
               <View style={{ alignSelf: "center", padding: 12 }}>
                 <Text style={styles.quote}>{quote}</Text>
@@ -75,7 +75,7 @@ class App extends Component {
             ></View>
 
             <Button
-              style={{ backgroundColor: "black" }}
+              style={styles.refresh}
               title="Refresh Quote"
               onPress={this.getNewQuote}
             />
