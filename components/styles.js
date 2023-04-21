@@ -8,10 +8,7 @@ export const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
   },
-  quotebox: {
-    color: "white",
-    fontSize: 16,
-  },
+
   buttons: {
     alignContent: "center",
     alignItems: "center",
@@ -29,22 +26,31 @@ export const styles = StyleSheet.create({
     marginBottom: 150,
   },
   author: {
-    color: "black",
+    color: "white",
     fontSize: 25,
   },
   quote: {
     alignSelf: "center",
-    color: "white",
-    fontSize: 15,
+    color: "yellowgreen",
+    fontSize: 16,
     padding: 20,
     borderLeftWidth: 4,
     borderRightWidth: 4,
+    borderWidth: 1,
+    borderColor: "thistle",
+    borderRadius: 50,
   },
-  date: {},
+  date: {
+    color: "seashell",
+    fontSize: 25,
+  },
   Input: {
     height: 40,
     margin: 12,
     borderWidth: 1,
     padding: 10,
   },
+  refresh:{
+    color:"green",
+  }
 });
