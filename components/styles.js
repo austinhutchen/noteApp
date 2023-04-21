@@ -45,10 +45,10 @@ export const styles = StyleSheet.create({
     fontSize: 25,
   },
   Input: {
-    height: 40,
+    height: 80,
     margin: 12,
     borderWidth: 1,
-    padding: 10,
+    paddingLeft: 10,
   },
   refresh:{
     color:"green",
