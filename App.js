@@ -63,7 +63,7 @@ class App extends Component {
           <View style={{ padding: 30, marginTop: "30%" }}>
             <TextInput
               style={styles.Input}
-              placeholder="useless placeholder"
+              placeholder="How is your day going?"
               onChangeText={updateLocal(this.j)}
             ></TextInput>
             <View
@@ -76,7 +76,7 @@ class App extends Component {
 
             <Button
               style={{ backgroundColor: "black" }}
-              title="Fetch Quote"
+              title="Refresh Quote"
               onPress={this.getNewQuote}
             />
           </View>
