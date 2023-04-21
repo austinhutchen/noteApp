@@ -79,6 +79,11 @@ class App extends Component {
               title="Refresh Quote"
               onPress={this.getNewQuote}
             />
+             <Button
+              style={styles.history}
+              title="History"
+              onPress={()=>{console.log("not done yet")}}
+            />
           </View>
         </View>
       </View>

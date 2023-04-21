@@ -51,6 +51,11 @@ export const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   refresh:{
-    color:"green",
-  }
+    
+
+  },
+
+  history:{
+
+  },
 });
