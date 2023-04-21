@@ -45,7 +45,7 @@ class App extends Component {
     const { quote, author, date } = this.state; //Destructuring
     return (
       <View style={styles.container}>
-        <Text style={{ color: "white", paddingTop: 80,paddingBottom:30, fontSize: 25,alignSelf:"center" }}>
+        <Text style={{ color: "khaki", paddingTop: 80,paddingBottom:30, fontSize: 25,alignSelf:"center" }}>
           Quote of the day!
         </Text>
 
