@@ -8,9 +8,12 @@ export const updateLocal = async (j) => {
   let serial = JSON.stringify(j);
   try {
     await AsyncStorage.setItem("Journal", serial);
+    return 1;
   } catch (error) {
     console.log(error);
+    return 0;
   }
+
 };
 export const check = async () => {
   const check =await AsyncStorage.getItem("Journal");
