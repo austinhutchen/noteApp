@@ -9,6 +9,9 @@ class App extends Component {
     super(props);
     this.j = new Journal();
     this.u = new User();
+    if(check()==false){
+      updateLocal(this.j);
+    }
     this.state = {
       quote: "",
       author: "",
