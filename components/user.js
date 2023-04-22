@@ -1,4 +1,3 @@
-
 export class Journal {
   constructor() {
     this.entries = [];
