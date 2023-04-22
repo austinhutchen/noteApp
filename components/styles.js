@@ -45,12 +45,21 @@ export const styles = StyleSheet.create({
     fontSize: 25,
   },
   Input: {
-    height: 40,
+    height: 110,
     margin: 12,
-    borderWidth: 1,
-    padding: 10,
+    paddingLeft: 10,
+    borderLeftWidth: 4,
+    borderRightWidth: 4,
+ 
+    borderColor: "darkgoldenrod",
+    borderRadius: 50,
   },
   refresh:{
-    color:"green",
-  }
+    
+
+  },
+
+  history:{
+
+  },
 });
