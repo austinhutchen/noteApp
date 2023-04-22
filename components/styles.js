@@ -45,10 +45,15 @@ export const styles = StyleSheet.create({
     fontSize: 25,
   },
   Input: {
-    height: 80,
+    height: 110,
     margin: 12,
     borderWidth: 1,
     paddingLeft: 10,
+    borderLeftWidth: 4,
+    borderRightWidth: 4,
+    borderWidth: 1,
+    borderColor: "darkgoldenrod",
+    borderRadius: 50,
   },
   refresh:{
     
