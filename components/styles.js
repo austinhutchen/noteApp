@@ -19,9 +19,11 @@ export const styles = StyleSheet.create({
     height: 35,
     marginVertical: 8,
   },
+
   random: {
     padding: 150,
   },
+
   title: {
     marginBottom: 20,
   },
@@ -33,10 +35,11 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
     color: "yellowgreen",
     fontSize: 16,
+    fontStyle:"italic" ,
     padding: 20,
     borderLeftWidth: 4,
     borderRightWidth: 4,
-    borderWidth: 1,
+    borderWidth: 5 ,
     borderColor: "thistle",
     borderRadius: 50,
   },
@@ -47,9 +50,11 @@ export const styles = StyleSheet.create({
   Input: {
     height: 110,
     margin: 12,
-    paddingLeft: 10,
+    paddingLeft: 20,
     borderLeftWidth: 4,
     borderRightWidth: 4,
+    borderWidth: 5 , 
+    border: 2,
     borderColor: "darkgoldenrod",
     borderRadius: 50,
   },
