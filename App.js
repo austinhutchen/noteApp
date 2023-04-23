@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.j = new Journal();
     this.u = new User();
-    if(check()==false){
+    if (check() == false) {
       updateLocal(this.j);
     }
     this.state = {
@@ -75,7 +75,7 @@ class App extends Component {
             <TextInput
               style={styles.Input}
               placeholder="How is your day going?"
-              onChangeText={updateLocal(this.j)}
+              onSubmitEditing={updateLocal(this.j)}
             ></TextInput>
             <View
               style={{
