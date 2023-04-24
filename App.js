@@ -16,14 +16,16 @@ class App extends Component {
       quote: "",
       author: "",
       date: "",
+      entry:"",
     };
   }
 
-  setData(res, author, today) {
+  setData(res, author, today,entry) {
     this.setState({
       quote: res,
       author: author,
       date: today,
+      entry: entry,
     });
   }
 
@@ -34,11 +36,16 @@ class App extends Component {
     this.getNewQuote();
   };
 
+  snatch =(entry)=>{
+  this.j.add(entry);
+  }
+
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random";
     axios.get(url).then((res) => {
       const data = res.data.content;
       const author = res.data.author;
+      const entry = 
       console.log("ONE:" + data + " " + author + "\n");
       this.setData(data, author, td);
     });
@@ -78,6 +85,7 @@ class App extends Component {
               onSubmitEditing={() => {
                 updateLocal(this.j);
               }}
+              onChangeText={(entry) => this.snatch({entry})}
             ></TextInput>
             <View
               style={{
@@ -96,7 +104,7 @@ class App extends Component {
               style={styles.history}
               title="History"
               onPress={() => {
-                console.log("not done yet");
+                this.j.display();
               }}
             />
           </View>
