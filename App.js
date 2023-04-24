@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, TextInput, View, Button } from "react-native";
+import { Text, TextInput, View, Button, TouchableHighlight } from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
@@ -12,6 +12,10 @@ class App extends Component {
     if (check() == false) {
       updateLocal(this.j);
     }
+    else{
+    old = check();
+    this.j=old;
+    }
     this.state = {
       quote: "",
       author: "",
@@ -20,6 +24,7 @@ class App extends Component {
     };
   }
 
+  
   setData(res, author, today,entry) {
     this.setState({
       quote: res,
@@ -36,21 +41,19 @@ class App extends Component {
     this.getNewQuote();
   };
 
-  snatch =(entry)=>{
-  this.j.add(entry);
-  }
 
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random";
     axios.get(url).then((res) => {
       const data = res.data.content;
       const author = res.data.author;
-      const entry = 
       console.log("ONE:" + data + " " + author + "\n");
       this.setData(data, author, td);
     });
   };
-
+onSubmitEdit=()=>{
+  (entry) => this.j.add(entry)
+}
   render() {
     const { quote, author, date } = this.state; //Destructuring
     return (
@@ -82,11 +85,11 @@ class App extends Component {
             <TextInput
               style={styles.Input}
               placeholder="How is your day going?"
-              onSubmitEditing={() => {
-                updateLocal(this.j);
-              }}
-              onChangeText={(entry) => this.snatch({entry})}
+              onSubmitEditing={this.onSubmitEdit}
             ></TextInput>
+              <TouchableHighlight onPress={this.onSubmitEdit}>
+              <Text>Press this button to submit editing</Text>
+              </TouchableHighlight>
             <View
               style={{
                 backgroundColor: "black",
