@@ -75,7 +75,9 @@ class App extends Component {
             <TextInput
               style={styles.Input}
               placeholder="How is your day going?"
-              onSubmitEditing={()=>{updateLocal(this.j)}}
+              onSubmitEditing={() => {
+                updateLocal(this.j);
+              }}
             ></TextInput>
             <View
               style={{
