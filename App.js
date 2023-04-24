@@ -96,7 +96,7 @@ class App extends Component {
               style={styles.history}
               title="History"
               onPress={() => {
-                console.log("not done yet");
+                this.j.display();
               }}
             />
           </View>
