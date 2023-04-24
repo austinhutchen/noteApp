@@ -1,13 +1,12 @@
 import moment from "moment";
 import { AsyncStorage } from "@react-native-async-storage/async-storage";
 
-export const updateLocal= async(j)=> {
+export async function updateLocal(j) {
   let serial = JSON.stringify(j);
   try {
     await AsyncStorage.setItem("Journal", serial);
     return 1;
   } catch (error) {
-    console.log(error);
     return 0;
   }
 }
