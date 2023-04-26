@@ -87,16 +87,13 @@ onSubmitEdit=()=>{
               placeholder="How is your day going?"
               onSubmitEditing={this.onSubmitEdit}
             ></TextInput>
-              <TouchableHighlight onPress={this.onSubmitEdit}>
-              <Text>Press this button to submit editing</Text>
+            <TouchableHighlight onPress={this.onSubmitEdit}>
+              <Text style={styles.Text}>SUBMIT</Text> 
               </TouchableHighlight>
-            <View
-              style={{
-                backgroundColor: "black",
-                width: "30%",
-                marginBottom: 10,
-              }}
-            ></View>
+            <View>
+              
+            </View>
+            
 
             <Button
               style={styles.refresh}

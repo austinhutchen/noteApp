@@ -62,4 +62,7 @@ export const styles = StyleSheet.create({
   refresh: {},
 
   history: {},
+  Text:{
+  color:"white",
+  },
 });
