@@ -89,13 +89,11 @@ class App extends Component {
               style={styles.Input}
               placeholder="How is your day going?"
             ></TextInput>
-            <TouchableHighlight onPress={this.onSubmitEdit}>
-              <Text style={styles.Text}>SUBMIT</Text>
-            </TouchableHighlight>
+
             <Button
-              style={styles.refresh}
-              title="Refresh Quote"
-              onPress={this.getNewQuote}
+              style={styles.Text}
+              title="Submit"
+              onPress={this.onSubmitEdit}
             />
             <Button
               style={styles.history}
@@ -103,6 +101,11 @@ class App extends Component {
               onPress={() => {
                 this.j.display();
               }}
+            />
+            <Button
+              style={styles.refresh}
+              title="Refresh Quote"
+              onPress={this.getNewQuote}
             />
           </View>
         </View>
