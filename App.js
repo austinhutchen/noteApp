@@ -46,7 +46,7 @@ class App extends Component {
   };
 
   getNewQuote = async () => {
-    let url = "https://api.quotable.io/random";
+    let url = "https://api.quotable.io/random?maxLength=50";
     axios.get(url).then((res) => {
       const data = res.data.content;
       const author = res.data.author;
