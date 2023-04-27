@@ -48,6 +48,7 @@ export const styles = StyleSheet.create({
     fontSize: 25,
   },
   Input: {
+    color: 'white',
     height: 110,
     margin: 12,
     paddingLeft: 20,
@@ -61,4 +62,7 @@ export const styles = StyleSheet.create({
   refresh: {},
 
   history: {},
+  Text:{
+  color:"white",
+  },
 });

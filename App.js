@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Text, TextInput, View, Button } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  Button,
+  TouchableHighlight,
+} from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
@@ -11,16 +17,19 @@ class App extends Component {
     this.u = new User();
     if (check() == false) {
       updateLocal(this.j);
+    } else {
+      old = check();
+      this.j = old;
     }
     this.state = {
       quote: "",
       author: "",
       date: "",
-      entry:"",
+      entry: "",
     };
   }
 
-  setData(res, author, today,entry) {
+  setData(res, author, today, entry) {
     this.setState({
       quote: res,
       author: author,
@@ -36,21 +45,18 @@ class App extends Component {
     this.getNewQuote();
   };
 
-  snatch =(entry)=>{
-  this.j.add(entry);
-  }
-
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random";
     axios.get(url).then((res) => {
       const data = res.data.content;
       const author = res.data.author;
-      const entry = 
       console.log("ONE:" + data + " " + author + "\n");
       this.setData(data, author, td);
     });
   };
-
+  onSubmitEdit = (_entry) => {
+    this.j.add(_entry);
+  };
   render() {
     const { quote, author, date } = this.state; //Destructuring
     return (
@@ -82,23 +88,12 @@ class App extends Component {
             <TextInput
               style={styles.Input}
               placeholder="How is your day going?"
-              onSubmitEditing={() => {
-                updateLocal(this.j);
-              }}
-              onChangeText={(entry) => this.snatch({entry})}
             ></TextInput>
-            <View
-              style={{
-                backgroundColor: "black",
-                width: "30%",
-                marginBottom: 10,
-              }}
-            ></View>
 
             <Button
-              style={styles.refresh}
-              title="Refresh Quote"
-              onPress={this.getNewQuote}
+              style={styles.Text}
+              title="Submit"
+              onPress={this.onSubmitEdit}
             />
             <Button
               style={styles.history}
@@ -106,6 +101,11 @@ class App extends Component {
               onPress={() => {
                 this.j.display();
               }}
+            />
+            <Button
+              style={styles.refresh}
+              title="Refresh Quote"
+              onPress={this.getNewQuote}
             />
           </View>
         </View>
