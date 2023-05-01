@@ -50,8 +50,11 @@ class App extends Component {
   };
 
   onSubmitEdit = (_entry) => {
-   this.j.add(_entry).bind(this);
+   this.j.add(_entry);
   };
+  show=() =>{
+    this.j.display();
+  }
 
   render() {
     const { quote, author, date } = this.state; //Destructuring
@@ -97,7 +100,7 @@ class App extends Component {
               style={styles.history}
               title="History"
               onPress={() => {
-                this.j.display();
+                this.show.bind(this);
               }}
             />
             <Button
