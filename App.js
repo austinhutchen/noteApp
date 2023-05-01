@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  TextInput,
-  View,
-  Button,
-  TouchableHighlight,
-} from "react-native";
+import { Text, TextInput, View, Button, TouchableOpacity } from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
@@ -54,9 +48,11 @@ class App extends Component {
       this.setData(data, author, td);
     });
   };
+
   onSubmitEdit = (_entry) => {
-    this.j.add(_entry);
+   this.j.add(_entry).bind(this);
   };
+
   render() {
     const { quote, author, date } = this.state; //Destructuring
     return (
@@ -93,7 +89,9 @@ class App extends Component {
             <Button
               style={styles.Text}
               title="Submit"
-              onPress={this.onSubmitEdit}
+              onPress={() => {
+                this.onSubmitEdit.bind(this);
+              }}
             />
             <Button
               style={styles.history}
