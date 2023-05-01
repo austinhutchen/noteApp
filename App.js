@@ -28,7 +28,7 @@ class App extends Component {
       quote: res,
       author: author,
       date: today,
-      entry: entry||"test",
+      entry: entry || "test",
     });
   }
 
@@ -40,7 +40,6 @@ class App extends Component {
   };
   EntryUpdate = () => {
     // parse the textinput for text data on submit and set state  of entry
-
   };
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random?maxLength=50";
@@ -95,16 +94,12 @@ class App extends Component {
             <Button
               style={styles.Text}
               title="Submit"
-              onPress={() => {
-                this.onSubmitEdit.bind(this);
-              }}
+              onPress={() => this.onSubmitEdit(param).bind(this)}
             />
             <Button
               style={styles.history}
               title="History"
-              onPress={() => {
-                this.show.bind(this);
-              }}
+              onPress={() => this.show.bind(this)}
             />
             <Button
               style={styles.refresh}
