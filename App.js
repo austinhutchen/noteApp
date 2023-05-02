@@ -20,6 +20,8 @@ class App extends Component {
       author: "",
       date: "",
       entry: "",
+      j : new Journal(),
+      u:new User(),
     };
   }
 
@@ -28,7 +30,6 @@ class App extends Component {
       quote: res,
       author: author,
       date: today,
-      entry: entry||"test",
     });
   }
 
@@ -37,10 +38,6 @@ class App extends Component {
     td = Today();
     this.setData("", "", td);
     this.getNewQuote();
-  };
-  EntryUpdate = () => {
-    // parse the textinput for text data on submit and set state  of entry
-
   };
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random?maxLength=50";
@@ -52,11 +49,13 @@ class App extends Component {
     });
   };
 
-  onSubmitEdit = (_entry) => {
-    this.j.add("test");
+  onSubmitEdit = () => {
+    this.state.j.add(this.state.entry);
+    return 0;
   };
+
   show = () => {
-    this.j.display();
+    this.state.j.display();
   };
 
   render() {
@@ -90,21 +89,18 @@ class App extends Component {
             <TextInput
               style={styles.Input}
               placeholder="How is your day going?"
+              onChangeText={(text) => this.setState({ entry: text })}
             ></TextInput>
 
             <Button
               style={styles.Text}
               title="Submit"
-              onPress={() => {
-                this.onSubmitEdit.bind(this);
-              }}
+              onPress={()=>{this.onSubmitEdit()}}
             />
             <Button
               style={styles.history}
               title="History"
-              onPress={() => {
-                this.show.bind(this);
-              }}
+              onPress={() => {this.show()}}
             />
             <Button
               style={styles.refresh}
