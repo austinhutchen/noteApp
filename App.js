@@ -7,8 +7,8 @@ import { updateLocal, check, Today } from "./components/helpers";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.j = new Journal();
-    this.u = new User();
+    this.j ;
+    this.u ;
     if (check() == false) {
       updateLocal(this.j);
     } else {
