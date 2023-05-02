@@ -9,12 +9,6 @@ class App extends Component {
     super(props);
     this.j ;
     this.u ;
-    if (check() == false) {
-      updateLocal(this.j);
-    } else {
-      old = check();
-      this.j = old;
-    }
     this.state = {
       quote: "",
       author: "",
@@ -23,6 +17,12 @@ class App extends Component {
       j : new Journal(),
       u:new User(),
     };
+    if (check() == false) {
+      updateLocal(this.j);
+    } else {
+      old = check();
+      this.j = old;
+    }
   }
 
   setData(res, author, today, entry) {
