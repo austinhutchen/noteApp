@@ -7,15 +7,15 @@ import { updateLocal, check, Today } from "./components/helpers";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.j ;
-    this.u ;
+    this.j;
+    this.u;
     this.state = {
       quote: "",
       author: "",
       date: "",
       entry: "",
-      j : new Journal(),
-      u:new User(),
+      j: new Journal(),
+      u: new User(),
     };
     if (check() == false) {
       updateLocal(this.j);
@@ -39,6 +39,7 @@ class App extends Component {
     this.setData("", "", td);
     this.getNewQuote();
   };
+  
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random?maxLength=50";
     axios.get(url).then((res) => {
@@ -95,12 +96,16 @@ class App extends Component {
             <Button
               style={styles.Text}
               title="Submit"
-              onPress={()=>{this.onSubmitEdit()}}
+              onPress={() => {
+                this.onSubmitEdit();
+              }}
             />
             <Button
               style={styles.history}
               title="History"
-              onPress={() => {this.show()}}
+              onPress={() => {
+                this.show();
+              }}
             />
             <Button
               style={styles.refresh}
@@ -114,4 +119,40 @@ class App extends Component {
   }
 }
 
+/*
+var PageOne = React.createClass({
+  _handlePress() {
+    this.props.navigator.push({id: 2,});
+  },
+
+  render() {
+    return (
+      <View style={[styles.container, {backgroundColor: 'green'}]}>
+       </View>
+    )
+  },
+});
+
+var PageTwo = React.createClass({
+  _handlePress() {
+    this.props.navigator.pop();
+  },
+
+  render() {
+    return (
+      <View style={[styles.container, {backgroundColor: 'purple'}]}>
+       </View>
+    )
+  },
+});
+
+var SampleApp = React.createClass({
+  _renderScene(route, navigator) {
+    if (route.id === 1) {
+      return <PageOne navigator={navigator} />
+    } else if (route.id === 2) {
+      return <PageTwo navigator={navigator} />
+    }
+  },
+*/
 export default App;

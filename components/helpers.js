@@ -12,7 +12,7 @@ export const updateLocal = async (j) => {
 };
 export const check = async () => {
   const check = await AsyncStorage.getItem("Journal");
-  if (check !== null) {
+  if (check) {
     return check;
   } else {
     return false;
