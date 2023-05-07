@@ -25,7 +25,7 @@ class App extends Component {
     }
   }
 
-  setData(res, author, today, entry) {
+  setData(res, author, today) {
     this.setState({
       quote: res,
       author: author,
