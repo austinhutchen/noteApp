@@ -52,6 +52,7 @@ class App extends Component {
 
   onSubmitEdit = () => {
     this.state.j.add(this.state.entry);
+    updateLocal(this.state.j);
     return 0;
   };
 
