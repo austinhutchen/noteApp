@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, TextInput, View, Button, TouchableOpacity } from "react-native";
+import { Text, TextInput, View, Button } from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
@@ -17,8 +17,8 @@ class App extends Component {
       j: new Journal(),
       u: new User(),
     };
-    if (check() == false) {
-      updateLocal(this.j);
+    if (!check() && updateLocal(this.j)) {
+      console.log("LOCAL: Information saved locally.");
     } else {
       old = check();
       this.j = old;
@@ -39,7 +39,7 @@ class App extends Component {
     this.setData("", "", td);
     this.getNewQuote();
   };
-  
+
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random?maxLength=50";
     axios.get(url).then((res) => {

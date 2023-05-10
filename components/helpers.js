@@ -7,11 +7,12 @@ export const updateLocal = async (j) => {
     await AsyncStorage.setItem("Journal", serial);
     return 1;
   } catch (error) {
+    console.log("ERROR in store attempt on local storage.")
     return 0;
   }
 };
 export const check = async () => {
-  const check = await AsyncStorage.getItem("Journal");
+  let check = await AsyncStorage.getItem("Journal");
   if (check) {
     return check;
   } else {
