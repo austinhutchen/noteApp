@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "darkslategrey",
+    backgroundColor: "darkslateblue",
     // alignItems: 'center',
     // justifyContent: 'center',
   },
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     borderRightWidth: 4,
     borderWidth: 5,
     border: 2,
-    borderColor: "darkgoldenrod",
+    borderColor: "khaki",
     borderRadius: 50,
   },
   refresh: {},
