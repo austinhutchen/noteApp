@@ -23,7 +23,7 @@ export class Journal {
     if (this.string !== undefined) {
       alert(this.string);
     } else {
-      alert("no input given");
+      alert("No history found.");
     }
   };
   enterJournal = (data, ev) => {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, TextInput, View, Button, TouchableOpacity } from "react-native";
+import { Text, TextInput, View, Button } from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
@@ -7,25 +7,25 @@ import { updateLocal, check, Today } from "./components/helpers";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.j = new Journal();
-    this.u = new User();
-    if (check() == false) {
-      updateLocal(this.j);
-    } else {
-      old = check();
-      this.j = old;
-    }
+    this.j;
+    this.u;
     this.state = {
       quote: "",
       author: "",
       date: "",
       entry: "",
-      j : new Journal(),
-      u:new User(),
+      j: new Journal(),
+      u: new User(),
     };
+    if (!check() && updateLocal(this.j)) {
+      console.log("LOCAL: Information saved locally.");
+    } else {
+      old = check();
+      this.j = old;
+    }
   }
 
-  setData(res, author, today, entry) {
+  setData(res, author, today) {
     this.setState({
       quote: res,
       author: author,
@@ -39,6 +39,7 @@ class App extends Component {
     this.setData("", "", td);
     this.getNewQuote();
   };
+
   getNewQuote = async () => {
     let url = "https://api.quotable.io/random?maxLength=50";
     axios.get(url).then((res) => {
@@ -51,7 +52,7 @@ class App extends Component {
 
   onSubmitEdit = () => {
     this.state.j.add(this.state.entry);
-    return 0;
+    updateLocal(this.state.j);
   };
 
   show = () => {
@@ -95,12 +96,16 @@ class App extends Component {
             <Button
               style={styles.Text}
               title="Submit"
-              onPress={()=>{this.onSubmitEdit()}}
+              onPress={() => {
+                this.onSubmitEdit();
+              }}
             />
             <Button
               style={styles.history}
               title="History"
-              onPress={() => {this.show()}}
+              onPress={() => {
+                this.show();
+              }}
             />
             <Button
               style={styles.refresh}
@@ -114,4 +119,40 @@ class App extends Component {
   }
 }
 
+/*
+var PageOne = React.createClass({
+  _handlePress() {
+    this.props.navigator.push({id: 2,});
+  },
+
+  render() {
+    return (
+      <View style={[styles.container, {backgroundColor: 'green'}]}>
+       </View>
+    )
+  },
+});
+
+var PageTwo = React.createClass({
+  _handlePress() {
+    this.props.navigator.pop();
+  },
+
+  render() {
+    return (
+      <View style={[styles.container, {backgroundColor: 'purple'}]}>
+       </View>
+    )
+  },
+});
+
+var SampleApp = React.createClass({
+  _renderScene(route, navigator) {
+    if (route.id === 1) {
+      return <PageOne navigator={navigator} />
+    } else if (route.id === 2) {
+      return <PageTwo navigator={navigator} />
+    }
+  },
+*/
 export default App;
