@@ -69,7 +69,7 @@ class App extends Component {
             color: "khaki",
             paddingTop: '6%',
             margin:'5%',
-            fontSize: 18,
+            fontSize: '25em',
             alignSelf: "center",
           }}
         >
