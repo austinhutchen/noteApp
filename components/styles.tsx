@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   quote: {
     alignSelf: "center",
     color: "white",
-    fontSize: '14em',
+    fontSize: '17em',
     fontStyle: "italic",
     padding: 20,
     borderLeftWidth: 4,
