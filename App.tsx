@@ -4,6 +4,7 @@ import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
 import { updateLocal, check, Today } from "./components/helpers";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -66,9 +67,9 @@ class App extends Component {
         <Text
           style={{
             color: "khaki",
-            paddingTop: 80,
-            paddingBottom: 30,
-            fontSize: 25,
+            paddingTop: '6%',
+            margin:'5%',
+            fontSize: '25em',
             alignSelf: "center",
           }}
         >
@@ -86,7 +87,7 @@ class App extends Component {
         <View style={{ marginTop: 20, marginBottom: 20 }}>
           <Text style={styles.author}>- {author}</Text>
 
-          <View style={{ padding: 30, marginTop: "30%" }}>
+          <View style={{ padding: 10, marginTop: "15%" }}>
             <TextInput
               style={styles.Input}
               placeholder="How is your day going?"
