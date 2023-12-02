@@ -84,13 +84,14 @@ class App extends Component {
             </View>
           </View>
         </View>
-        <View style={{ marginTop: 20, marginBottom: 20 }}>
+        <View style={{ marginTop: '10%', marginBottom: '8%' }}>
           <Text style={styles.author}>- {author}</Text>
 
           <View style={{ padding: 10, marginTop: "15%" }}>
             <TextInput
               style={styles.Input}
               placeholder="How is your day going?"
+              placeholderTextColor={'#e0ffcd'}
               onChangeText={(text) => this.setState({ entry: text })}
             ></TextInput>
 
