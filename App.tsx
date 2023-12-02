@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, TextInput, View, Button } from "react-native";
+import { Text, TextInput, Pressable, View, Button } from "react-native";
 import axios from "axios";
 import { styles } from "./components/styles";
 import { Journal, User } from "./components/user";
@@ -64,18 +64,6 @@ class App extends Component {
     const { quote, author, date } = this.state; //Destructuring
     return (
       <View style={styles.container}>
-        <Text
-          style={{
-            color: "khaki",
-            paddingTop: '6%',
-            margin:'5%',
-            fontSize: '25em',
-            alignSelf: "center",
-          }}
-        >
-          Quote of the day!
-        </Text>
-
         <View className={styles.quotebox}>
           <Text style={styles.date}>{date}</Text>
           <View>
@@ -90,31 +78,21 @@ class App extends Component {
           <View style={{ padding: 10, marginTop: "15%" }}>
             <TextInput
               style={styles.Input}
-              placeholder="How is your day going?"
-              placeholderTextColor={'#e0ffcd'}
+              placeholder="How is your day going? (click here)"
+              placeholderTextColor={'#feffdf'}
               onChangeText={(text) => this.setState({ entry: text })}
             ></TextInput>
+ <Pressable style={styles.button} onPress={() => { this.onSubmitEdit(); }}>
+      <Text style={styles.buttontext}>Submit</Text>
+    </Pressable>
+                                 <Pressable style={styles.button}  onPress={() => {this.show(); }}>
+      <Text style={styles.buttontext}>History</Text>
+    </Pressable>
+     <Pressable style={styles.button} onPress={this.getNewQuote}>
+      <Text style={styles.buttontext}>Refresh Quote</Text>
+    </Pressable>
 
-            <Button
-              style={styles.Text}
-              title="Submit"
-              onPress={() => {
-                this.onSubmitEdit();
-              }}
-            />
-            <Button
-              style={styles.history}
-              title="History"
-              onPress={() => {
-                this.show();
-              }}
-            />
-            <Button
-              style={styles.refresh}
-              title="Refresh Quote"
-              onPress={this.getNewQuote}
-            />
-          </View>
+                 </View>
         </View>
       </View>
     );

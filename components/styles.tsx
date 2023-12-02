@@ -8,7 +8,18 @@ export const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
   },
-
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4,
+  },
+  buttontext: {
+    fontSize: 16,
+    lineHeight: '35%',
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: '#347474',
+  },
 
   author: {
     color: "white",
@@ -29,6 +40,7 @@ export const styles = StyleSheet.create({
   date: {
     color: "seashell",
     fontSize: 25,
+    marginTop:'11%'
   },
   Input: {
     color: "white",
@@ -48,6 +60,6 @@ export const styles = StyleSheet.create({
   },
   history: {},
   Text: {
-    color: "white",
+    color: "#f95959",
   },
 });
